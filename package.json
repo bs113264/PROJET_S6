@@ -1,0 +1,12 @@
+{
+  "name": "PROJET_S6",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "api",
+    "front"
+  ],
+  "scripts": {
+    "format": "prettier --write \"*/src/**/*.{ts,js,vue}\" \"*/test/**/*.{ts,js,vue}\""
+  }
+}
