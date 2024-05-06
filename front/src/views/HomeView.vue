@@ -1,12 +1,13 @@
-<template></template>
+<template>
+  <Presentation></Presentation>
+</template>
 
 <script>
-  import Home from '../components/Presentation.vue';
+
+  import Presentation from '../components/Presentation.vue';
 
   export default {
     name: 'HomeView',
-    components: {
-      Home,
-    },
+    components: { Presentation },
   };
 </script>

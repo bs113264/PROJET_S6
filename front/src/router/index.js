@@ -1,19 +1,31 @@
 import Presentation from '../components/Presentation.vue';
 import { createRouter, createWebHistory } from 'vue-router';
-import Services from '../components/Services.vue';
+import HomeView from '../views/HomeView.vue';
+import PresentationView from '../views/PresentationView.vue';
+import ServicesView from '../views/ServicesView.vue';
+import ReservationSessionView from '../views/ReservationSessionView.vue';
 
 const routes = [
   {
+    path: '/',
+    name: 'Home',
+    component: HomeView,
+  },
+  {
     path: '/presentation',
     name: 'Presentation',
-    component: Presentation,
+    component: PresentationView,
   },
-
   {
     path: '/services',
     name: 'Services',
-    component: Services,
+    component: ServicesView,
   },
+  {
+    path: '/reservation',
+    name: 'Reservation',
+    component: ReservationSessionView
+  }
   // Autres routes...
 ];
 
