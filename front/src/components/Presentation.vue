@@ -1,54 +1,35 @@
 <template>
-  <div class="container">
-    <h1 class="title">Présentation</h1>
-    <div class="textbox">
-      <h2 class="subtitle">Écrivez votre présentation</h2>
-      <textarea v-model="presentationText" rows="10" placeholder="Écrivez votre présentation ici..."></textarea>
-    </div>
-  </div>
+  <v-container>
+    <v-row justify="center">
+      <v-col cols="12" sm="8" md="6">
+        <v-card class="textbox">
+          <v-card-text>
+            <div class="presentation-text">
+              <p>Bienvenue sur notre site !</p>
+              <p>Nous sommes ravis de vous accueillir et de vous présenter nos services.</p>
+            </div>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
   export default {
     name: 'Presentation',
-    data() {
-      return {
-        presentationText: ''
-      };
-    }
   };
 </script>
 
 <style scoped>
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-
-  .title {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
   .textbox {
-    background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+    padding: 1px;
   }
 
-  .subtitle {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-
-  textarea {
-    width: 100%;
-    border: none;
-    border-radius: 8px;
-    padding: 10px;
-    box-sizing: border-box;
-    resize: vertical;
+  .presentation-text {
+    font-size: 32px;
+    line-height: 1.6;
   }
 </style>
