@@ -37,6 +37,7 @@
       <v-row class="form-group">
         <v-col cols="12">
           <v-checkbox v-model="mixAndMaster" label="Je veux un mastering de mon morceau" dense></v-checkbox>
+
           <v-checkbox v-model="mixAndMaster" label="Je veux un mix de mon morceau" dense></v-checkbox>
         </v-col>
       </v-row>

@@ -7,7 +7,7 @@
             <div class="presentation-text">
               <p>Bienvenue sur notre site !</p>
               <p>Nous sommes ravis de vous accueillir et de vous présenter nos services.
-              </p>
+              Nous sommes un studio d'enregistrement situé au 125 rue de france, 06000 Nice</p>
             </div>
           </v-card-text>
         </v-card>
