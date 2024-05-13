@@ -6,7 +6,8 @@
           <v-card-text>
             <div class="presentation-text">
               <p>Bienvenue sur notre site !</p>
-              <p>Nous sommes ravis de vous accueillir et de vous présenter nos services.</p>
+              <p>Nous sommes ravis de vous accueillir et de vous présenter nos services.
+              </p>
             </div>
           </v-card-text>
         </v-card>

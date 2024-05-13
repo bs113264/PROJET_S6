@@ -1,5 +1,6 @@
 <template>
-  <v-container class="form-container">
+  <div class="reservation-session-overlay">
+    <v-container class="form-container">
     <h1 class="title">Réserver une session</h1>
     <!-- Formulaire -->
     <v-form @submit.prevent="submitForm">
@@ -58,6 +59,7 @@
 
     </v-form>
   </v-container>
+  </div>
 </template>
 
 <script setup>
@@ -102,13 +104,24 @@
 </script>
 
 <style scoped>
+  .reservation-session-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9); /* Opacité de l'arrière-plan */
+    z-index: 1000; /* Place la politique de confidentialité au-dessus du reste du contenu */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .form-container {
-    max-width: 600px;
-    margin: 0 auto;
+    max-width: 800px;
     padding: 20px;
+    background-color: #ffffff;
     border-radius: 10px;
-    background-color: #f4f4f4;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
 
   .title {
