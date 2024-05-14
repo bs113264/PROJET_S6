@@ -6,6 +6,7 @@ import ServicesView from '../views/ServicesView.vue';
 import ReservationSessionView from '../views/ReservationSessionView.vue';
 import PaymentView from '../views/PaymentView.vue';
 import RGPDView from '../views/RGPDView.vue';
+import ContactView from '../views/ContactView.vue';
 
 const routes = [
   {
@@ -37,7 +38,11 @@ const routes = [
     path: '/rgpd',
     name: 'RGPD',
     component: RGPDView
-  }
+  },
+  { path: '/contact',
+    name: 'Contact',
+    component: ContactView
+  },
   // Autres routes...
 ];
 
