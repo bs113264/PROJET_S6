@@ -7,8 +7,7 @@
           <v-card-text>
             <div class="presentation-text">
               <p>Bienvenue sur notre site !</p>
-              <p>Nous sommes ravis de vous accueillir et de vous présenter nos services.
-              Nous sommes un studio d'enregistrement situé au 125 rue de france, 06000 Nice</p>
+              <p>Liés par l’amitié, Khadim, Phara, Steven, Punch et Aristide ont toujours souhaité avancer dans une démarche artistique commune. Initialement implantée dans un box de parking sous l’association « 5am production », la structure est devenue celle des « Studios 5AM » en 2020, ouvrant ses nouvelles portes dans le centre-ville de Nice, sur la rue de France.  Aujourd’hui, Les Studios 5AM ont développé trois aspects de leur activité qui leur permettent de devenir des acteurs émergents de la culture artistique azuréenne.  En premier lieu, la structure propose à ses clients un ensemble de prestations audio-visuelles (enregistrement, mixage, mastering, réalisation vidéo, shootings et accompagnement artistique plus global). Avec la création de son label indépendant « Le Five », elle s’est également engagée à développer des artistes (Phara et Norhvn) et à les accompagner dans leur carrière musicale</p>
             </div>
           </v-card-text>
         </v-card>

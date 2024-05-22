@@ -58,6 +58,12 @@
 
 <script setup>
   import { ref } from 'vue';
+  import emailjs from 'emailjs-com';
+
+  // Remplacez 'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID' et 'YOUR_PUBLIC_KEY' par vos identifiants EmailJS
+  const SERVICE_ID = 'service_9bcsuii';
+  const TEMPLATE_ID = 'template_u2rxeia';
+  const PUBLIC_KEY = 'JzmSIbK9bd4EdS0xl';
 
   const intervenants = [
     { nom: "Santos", prenom: "Steven", poste: "Responsable Management", email: "ameyzin137@gmail.com", tel: "06 25 52 13 08" },
@@ -75,15 +81,23 @@
   const message = ref('');
 
   const sendEmail = () => {
-    const data = {
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, {
       nom: nom.value,
       prenom: prenom.value,
       email: email.value,
-      message: message.value
-    };
-
-    // Ici, vous pouvez ajouter la logique pour envoyer l'e-mail
-    console.log("Données du formulaire:", data);
+      message: message.value,
+    }, PUBLIC_KEY)
+      .then((response) => {
+        console.log('Email sent successfully!', response.status, response.text);
+        // Optionally reset the form fields
+        nom.value = '';
+        prenom.value = '';
+        email.value = '';
+        message.value = '';
+      })
+      .catch((error) => {
+        console.error('Failed to send email:', error);
+      });
   };
 </script>
 

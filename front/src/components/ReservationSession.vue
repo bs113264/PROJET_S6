@@ -33,15 +33,6 @@
         </v-col>
       </v-row>
 
-      <!-- Mix et mastering -->
-      <v-row class="form-group">
-        <v-col cols="12">
-          <v-checkbox v-model="mixAndMaster" label="Je veux un mastering de mon morceau" dense></v-checkbox>
-
-          <v-checkbox v-model="mixAndMaster" label="Je veux un mix de mon morceau" dense></v-checkbox>
-        </v-col>
-      </v-row>
-
       <!-- Prix de la session -->
       <v-row class="form-group">
         <v-col cols="12">
@@ -71,10 +62,9 @@
   const startTime = ref('');
   const endTime = ref('');
   const soundEngineer = ref('');
-  const mixAndMaster = ref(false);
 
   // Liste des ingénieurs son
-  const engineers = ["DAF SHADOW", "BOSKO"];
+  const engineers = ["DAF SHADOW", "BOSKO", "PAS D'INGÉ SON"];
 
   // Calcul du prix de la session en fonction du nombre d'heures
   const prixSession = computed(() => {
@@ -100,7 +90,6 @@
     startTime.value = '';
     endTime.value = '';
     soundEngineer.value = '';
-    mixAndMaster.value = false;
   };
 </script>
 

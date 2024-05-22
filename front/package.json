@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@stripe/stripe-js": "^3.4.0",
+    "emailjs-com": "^3.2.0",
     "material-design-icons-iconfont": "^6.7.0",
     "pinia": "^2.1.7",
     "vue": "^3.4.15",
