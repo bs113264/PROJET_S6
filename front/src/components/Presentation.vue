@@ -31,8 +31,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.9); /* Opacité de l'arrière-plan */
-    z-index: 1000; /* Place la politique de confidentialité au-dessus du reste du contenu */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -40,12 +38,15 @@
 
   .textbox {
     border-radius: 10px;
-    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.9);
     padding: 1px;
+    background-color: black;
   }
 
   .presentation-text {
     font-size: 32px;
     line-height: 1.6;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.9);
   }
 </style>

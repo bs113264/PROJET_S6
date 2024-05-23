@@ -100,8 +100,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.9); /* Opacité de l'arrière-plan */
-    z-index: 1000; /* Place la politique de confidentialité au-dessus du reste du contenu */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -111,7 +109,7 @@
     padding: 20px;
     background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgb(0, 0, 0);
   }
 
   .title {

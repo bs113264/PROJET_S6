@@ -134,7 +134,10 @@
   }
 
   .v-btn {
-    margin: 10px;
+    margin: 60px;
+    padding: 50px;
+    background-color: black;
+    color: white;
   }
 
   .form {

@@ -108,8 +108,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.9); /* Opacité de l'arrière-plan */
-    z-index: 1000; /* Place la politique de confidentialité au-dessus du reste du contenu */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -120,23 +118,23 @@
     margin-bottom: 30px;
     font-size: 36px;
     font-weight: bold;
-    color: #333;
+    color: #000000;
   }
 
   .contact-card {
     margin-bottom: 40px;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgb(0, 0, 0);
 
   }
 
   .contact-title {
     background-color: #333;
-    color: #fff;
+    color: #ffffff;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     padding: 15px;
-    font-size: 20px;
+    font-size: 26px;
     font-weight: bold;
   }
 </style>

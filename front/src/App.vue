@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar class="h-auto">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-app-bar-title><b>FIVE MOB</b></v-app-bar-title>
+      <v-app-bar-title><b>FIVE</b></v-app-bar-title>
       <v-btn icon color="black">
         <v-icon>check</v-icon>
       </v-btn>
@@ -19,12 +19,13 @@
     <v-navigation-drawer
       v-model="drawer"
       app
+
       style="background-color: transparent">
       <v-btn color="white" dark class="my-4" to="/presentation">Qui sommes nous ?</v-btn>
       <v-btn color="white" dark class="my-4" to="/services">Services</v-btn>
       <v-btn color="white" dark class="my-4" to="/reservation">Réserve ta session</v-btn>
       <v-btn color="white" dark class="my-4" to="/rgpd">Nos Events</v-btn>
-      <v-btn color="white" dark class="my-4" to="/contact">Nous contacter</v-btn>
+      <v-btn color="white" dark class="my-4" to="/contact">Nous Contacter</v-btn>
     </v-navigation-drawer>
 
     <main class="w-100 bg-amber h-100 w-100">
@@ -244,7 +245,7 @@ Si vous avez des questions concernant cette Politique de confidentialité, veuil
 
 <style scoped>
   .background-container {
-    background-image: url('assets/logo.jpg');
+    background-image: url('assets/logo2.PNG');
     background-size: cover;
     background-position: center;
     position: absolute;
