@@ -1,151 +1,48 @@
 <template>
-  <div class="privacy-policy-overlay">
-    <v-container class="privacy-policy-container">
-      <!-- Titre -->
-      <h1 class="title">Politique de confidentialité</h1>
-
-      <!-- Zone de texte pour la politique de confidentialité -->
-      <v-textarea
-        v-model="privacyPolicyText"
-        label="Politique de confidentialité"
-        outlined
-        rows="10"
-        readonly=""
-      ></v-textarea>
-
-      <!-- Boutons pour accepter ou décliner -->
-      <v-row class="buttons-row">
-        <v-col cols="6">
-          <v-btn color="primary" @click="acceptPrivacyPolicy">Accepter</v-btn>
-        </v-col>
-        <v-col cols="6">
-          <v-btn color="red" @click="declinePrivacyPolicy">Décliner</v-btn>
-        </v-col>
-      </v-row>
-    </v-container>
-  </div>
+  <v-container class="gallery-container">
+    <v-row>
+      <v-col
+        v-for="index in images"
+        :key="index"
+        cols="12"
+        sm="6"
+        md="3"
+        class="gallery-item"
+      >
+        <v-img
+          :src="getImageUrl(index)"
+          class="gallery-image"
+          :alt="'Event ' + index"
+        ></v-img>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script setup>
   import { ref } from 'vue';
 
-  // Contenu de la politique de confidentialité
-  const privacyPolicyText = ref(`
-  Conditions Générales d'Utilisation (CGU)
+  const images = Array.from({ length: 12 }, (_, i) => i + 1).slice(4); // Crée une liste des index d'images et coupe les 4 premiers
 
-1. Présentation du site
-Le site FiveMob est édité par LesStudios5am, société SAS, immatriculée au registre du commerce et des sociétés sous le numéro [numéro RCS], dont le siège social est situé 125 rue de France 06000 Nice.
-
-2. Objet
-Les présentes conditions d'utilisation ont pour objet de définir les modalités selon lesquelles les utilisateurs accèdent et utilisent le site FiveMob.
-
-3. Acceptation des conditions
-En accédant au site et en l'utilisant, l'utilisateur reconnaît avoir pris connaissance et accepté sans réserve les présentes conditions d'utilisation.
-
-4. Propriété intellectuelle
-Le contenu du site, incluant notamment les textes, images, logos, et vidéos, est protégé par le droit d'auteur et autres droits de propriété intellectuelle détenus par LesStudios5am ou ses concédants. Toute reproduction ou utilisation non autorisée du contenu est strictement interdite.
-
-5. Responsabilité
-LesStudios5am ne saurait être tenue responsable des dommages directs ou indirects résultant de l'utilisation du site ou de l'impossibilité d'y accéder.
-
-Conditions Générales de Vente (CGV)
-
-1. Champ d'application
-Les présentes conditions générales de vente s'appliquent à toutes les ventes de produits effectuées par LesStudios5am sur le site FiveMob.
-
-2. Commande
-Les commandes passées sur le site sont soumises à l'acceptation préalable des présentes CGV. Le client déclare avoir pris connaissance des CGV avant de passer sa commande.
-
-3. Prix
-Les prix des produits sont indiqués en euros et sont susceptibles d'être modifiés à tout moment. Les frais de livraison sont à la charge du client et sont précisés lors du processus de commande.
-
-4. Paiement
-Le paiement s'effectue en ligne par carte bancaire ou tout autre moyen de paiement accepté par LesStudios5am. La commande est validée à réception du paiement.
-
-5. Livraison
-Les produits sont livrés à l'adresse indiquée par le client lors du processus de commande. Les délais de livraison sont donnés à titre indicatif et LesStudios5am ne saurait être tenue responsable des retards de livraison imputables au transporteur.
-
-6. Droit de rétractation
-Le client dispose d'un délai de rétractation de 14 jours à compter de la réception des produits pour exercer son droit de rétractation, sans avoir à justifier de motifs ni à payer de pénalités.
-
-    Politique de confidentialité
-
-Cette Politique de confidentialité décrit comment LesStudios5am collecte, utilise et protège les informations personnelles que vous nous fournissez lorsque vous utilisez notre site web de réservation de session.
-
-Collecte et utilisation des informations personnelles
-
-Lorsque vous utilisez notre site web, nous pouvons collecter les informations personnelles suivantes :
-•\tNom
-•\tPrénom
-•\tAdresse e-mail
-
-Nous collectons ces informations dans le but de :
-•\tIdentifier l'utilisateur et faciliter l'utilisation du site web.
-•\tTransmettre les informations de réservation de session au client.
-
-Les informations personnelles collectées sont stockées dans notre base de données sécurisée et ne sont accessibles qu'au DSI de l'entreprise.
-Conservation des données
-
-Nous conserverons vos informations personnelles aussi longtemps que nécessaire pour atteindre les finalités pour lesquelles elles ont été collectées, y compris pour satisfaire à toute obligation légale, comptable ou de reporting.
-Partage des informations personnelles
-
-Nous ne partagerons pas vos informations personnelles avec des tiers sans votre consentement préalable, sauf si cela est nécessaire pour satisfaire à une obligation légale.
-Droits en matière de protection des données
-
-Vous avez le droit d'accéder à vos informations personnelles, de les rectifier, de les supprimer et de limiter leur traitement. Vous avez également le droit de vous opposer au traitement de vos informations personnelles. Pour exercer ces droits, veuillez nous contacter à l'adresse e-mail suivante : 5amsouth@gmail.com.
-
-Consentement parental
-Nous ne collectons pas intentionnellement les informations personnelles des enfants de moins de 16 ans sans le consentement préalable des parents ou tuteurs. Si vous pensez que nous avons collecté des informations personnelles sur un enfant de moins de 16 ans sans le consentement parental, veuillez nous contacter afin que nous puissions supprimer ces informations.
-
-Modifications de la Politique de confidentialité
-Nous nous réservons le droit de modifier cette Politique de confidentialité à tout moment. Les modifications prendront effet immédiatement après leur publication sur le site web.
-En continuant à utiliser notre site web, vous consentez à notre Politique de confidentialité.
-
-Si vous avez des questions concernant cette Politique de confidentialité, veuillez nous contacter à l'adresse e-mail suivante : 5amsouth@gmail.com.
-
-  `);
-
-  // Fonction pour accepter la politique de confidentialité
-  const acceptPrivacyPolicy = () => {
-    alert("Vous avez accepté la politique de confidentialité de notre site. Bonne navigation !")
-  };
-
-  // Fonction pour décliner la politique de confidentialité
-  const declinePrivacyPolicy = () => {
-    alert("Vous n'avez pas accepté la politique de confidentialité de notre site. L'utilisation de ce dernier ne vous est donc pas autorisée !")
+  const getImageUrl = (index) => {
+    return new URL(`../assets/event${index}.png`, import.meta.url).href;
   };
 </script>
 
 <style scoped>
-  .privacy-policy-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.9); /* Opacité de l'arrière-plan */
-    z-index: 1000; /* Place la politique de confidentialité au-dessus du reste du contenu */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .privacy-policy-container {
-    max-width: 800px;
+  .gallery-container {
     padding: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: #000000;
   }
 
-  .title {
-    text-align: center;
+  .gallery-item {
     margin-bottom: 20px;
   }
 
-  .buttons-row {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
+  .gallery-image {
+    width: 100%;
+    height: 800px; /* Définissez une hauteur fixe pour les images */
+    object-fit: cover; /* Cette propriété permet de maintenir le ratio d'aspect des images */
+    border-radius: 10px;
   }
 </style>

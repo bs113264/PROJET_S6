@@ -1,15 +1,15 @@
 <template>
   <v-app>
-    <v-app-bar class="h-auto">
+    <v-app-bar color="black" class="h-auto">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-app-bar-title><b>FIVE</b></v-app-bar-title>
-      <v-btn icon color="black">
+      <v-btn icon color="white">
         <v-icon>check</v-icon>
       </v-btn>
-      <v-btn icon color="black">
+      <v-btn icon color="white">
         <v-icon>check</v-icon>
       </v-btn>
-      <v-btn icon @click="showDialog = true" color="black">
+      <v-btn icon @click="showDialog = true" color="white">
         <v-icon>person</v-icon>
       </v-btn>
       <template v-slot:append></template>
