@@ -3,23 +3,25 @@
     <v-app-bar color="black" class="h-auto">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-app-bar-title><b>FIVE</b></v-app-bar-title>
-      <v-btn icon color="white">
-        <v-icon>check</v-icon>
+      <!-- Bouton Instagram avec lien -->
+      <v-btn icon href="https://www.instagram.com/lefivemob/" target="_blank" color="white">
+        <v-icon>instagram</v-icon>
       </v-btn>
-      <v-btn icon color="white">
-        <v-icon>check</v-icon>
+      <!-- Bouton Facebook avec lien -->
+      <v-btn icon href="https://www.facebook.com/lesstudios5am/about/" target="_blank" color="white">
+        <v-icon>facebook</v-icon>
       </v-btn>
+      <!-- Bouton pour afficher la boîte de dialogue de connexion -->
       <v-btn icon @click="showDialog = true" color="white">
         <v-icon>person</v-icon>
       </v-btn>
-      <template v-slot:append></template>
     </v-app-bar>
+
 
     <!-- Barre latérale -->
     <v-navigation-drawer
       v-model="drawer"
       app
-
       style="background-color: transparent">
       <v-btn color="white" dark class="my-4" to="/presentation">Qui sommes nous ?</v-btn>
       <v-btn color="white" dark class="my-4" to="/services">Services</v-btn>
@@ -38,12 +40,11 @@
     </main>
 
     <!-- Footer avec le bouton pour afficher la politique de confidentialité -->
-    <v-footer app>
+    <v-footer app class="footer">
       <v-spacer></v-spacer>
-      <v-btn color="black" @click="showPrivacyPolicy = true">Politique de confidentialité</v-btn>
+      <v-btn color="white" @click="showPrivacyPolicy = true" class="privacy-btn">Politique de confidentialité</v-btn>
       <v-spacer></v-spacer>
     </v-footer>
-
 
     <!-- Dialogue pour la connexion/création de compte -->
     <v-dialog v-model="showDialog" persistent max-width="600px">
@@ -109,8 +110,6 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-
-
   </v-app>
 </template>
 
@@ -202,7 +201,6 @@ En continuant à utiliser notre site web, vous consentez à notre Politique de c
 Si vous avez des questions concernant cette Politique de confidentialité, veuillez nous contacter à l'adresse e-mail suivante : 5amsouth@gmail.com.
 `);
 
-
   const items = [
     { text: 'Qui sommes nous ?' },
     { text: 'Services' },
@@ -259,5 +257,15 @@ Si vous avez des questions concernant cette Politique de confidentialité, veuil
 
   .content {
     /* Ajoutez du style au contenu principal de votre studio d'enregistrement */
+  }
+
+  .footer {
+    background-color: black;
+    color: white;
+  }
+
+  .privacy-btn {
+    color: black;
+    background-color: white;
   }
 </style>

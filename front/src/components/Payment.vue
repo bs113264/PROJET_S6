@@ -1,6 +1,7 @@
 <script setup>
   import { ref } from 'vue';
   import { loadStripe } from '@stripe/stripe-js';
+  import {useRouter} from 'vue-router';
 
   // Variable pour stocker les informations du formulaire de paiement
   const cardNumber = ref('');
@@ -12,6 +13,8 @@
 
   // Charger Stripe avec votre clé publique
   const stripePromise = loadStripe('YOUR_STRIPE_PUBLIC_KEY');
+
+  const router = useRouter();
 
   // Fonction pour gérer le paiement
   const handlePayment = async () => {
@@ -54,6 +57,10 @@
     // Ajoutez d'autres règles de validation pour les champs de date d'expiration et de CVC si nécessaire
     return true;
   };
+
+  const goToReservation = () => {
+    router.push('/reservation');
+  };
 </script>
 
 <template>
@@ -94,6 +101,13 @@
       <v-row class="form-group">
         <v-col cols="12">
           <v-btn color="black" dark type="submit">Payer</v-btn>
+        </v-col>
+      </v-row>
+
+      <!-- Bouton de retour -->
+      <v-row class="form-group">
+        <v-col cols="12">
+          <v-btn color="black" dark @click="goToReservation">Retour</v-btn>
         </v-col>
       </v-row>
 

@@ -7,11 +7,11 @@
       <!-- Intervenants sur le côté gauche -->
       <v-col cols="12" sm="6" md="4">
         <v-row>
-          <v-col cols="12" v-for="(intervenant, index) in intervenants.slice(0, 3)" :key="index">
+          <v-col cols="12" v-for="(intervenant, index) in intervenants.slice(0, 1)" :key="index">
             <v-card class="contact-card">
-              <v-card-title class="contact-title">{{ intervenant.prenom }} {{ intervenant.nom }}</v-card-title>
+              <v-card-title class="contact-title">{{ intervenant.prenom }} {{ intervenant.nom }}  <h5>{{ intervenant.poste }}</h5></v-card-title>
               <v-card-text>
-                <p><strong>Poste:</strong> {{ intervenant.poste }}</p>
+                <!-- Déplacer cette ligne juste en dessous de la balise v-card-title -->
                 <p><strong>Email:</strong> {{ intervenant.email }}</p>
                 <p><strong>Tel:</strong> {{ intervenant.tel }}</p>
               </v-card-text>
@@ -41,9 +41,8 @@
         <v-row>
           <v-col cols="12" v-for="(intervenant, index) in intervenants.slice(3)" :key="index">
             <v-card class="contact-card">
-              <v-card-title class="contact-title">{{ intervenant.prenom }} {{ intervenant.nom }}</v-card-title>
+              <v-card-title class="contact-title">{{ intervenant.prenom }} {{ intervenant.nom }}  <h5>{{ intervenant.poste }}</h5></v-card-title>
               <v-card-text>
-                <p><strong>Poste:</strong> {{ intervenant.poste }}</p>
                 <p><strong>Email:</strong> {{ intervenant.email }}</p>
                 <p v-if="intervenant.tel"><strong>Tel:</strong> {{ intervenant.tel }}</p>
               </v-card-text>
@@ -66,13 +65,10 @@
   const PUBLIC_KEY = 'JzmSIbK9bd4EdS0xl';
 
   const intervenants = [
-    { nom: "Santos", prenom: "Steven", poste: "Responsable Management", email: "ameyzin137@gmail.com", tel: "06 25 52 13 08" },
-    { nom: "Santos", prenom: "Aristide", poste: "Responsable Informatique", email: "aristide.ma.santos@gmail.com", tel: "06 63 75 77 36" },
-    { nom: "Belleguie", prenom: "Maxime", poste: "Directeur Général", email: "maximebelleguie@gmail.com", tel: "06 16 53 17 06" },
+    { nom: "BOSKO", prenom: "", poste: "Ingénieur Son", email: "ameyzin137@gmail.com", tel: "06 25 52 13 08" },
     { nom: "DAF", prenom: "SHADOW", poste: "Ingénieur Son", email: "youngdaf0@gmail.com", tel: "07 44 75 17 29" },
     { nom: "BOSKO", prenom: "", poste: "Ingénieur Son" },
-    { nom: "Robustella", prenom: "Aurélien", poste: "Responsable Évenementiel" },
-    { nom: "Sylla", prenom: "Khadim", poste: "Responsable Visuel", email: "Khadim.sylla.911@outlook.fr", tel: "06 19 35 29 74" }
+    { nom: "DAF", prenom: "SHADOW", poste: "Ingénieur Son", email: "youngdaf0@gmail.com", tel: "07 44 75 17 29"  },
   ];
 
   const nom = ref('');
@@ -126,15 +122,16 @@
     border-radius: 10px;
     box-shadow: 0 2px 5px rgb(0, 0, 0);
 
+
   }
 
   .contact-title {
-    background-color: #333;
+    background-color: #000000;
     color: #ffffff;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     padding: 15px;
-    font-size: 26px;
+    font-size: 27px;
     font-weight: bold;
   }
 </style>

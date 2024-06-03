@@ -4,8 +4,8 @@
       <h1 class="title">Réserver une session</h1>
       <!-- Sélecteur de date -->
       <v-row class="form-group">
-        <v-col cols="12" sm="6">
-          <v-date-picker v-model="selectedDate" :min="minDate" :max="maxDate" @input="updatePrixSession"></v-date-picker>
+        <v-col cols="12">
+          <v-date-picker v-model="selectedDate" @input="updatePrixSession" class="full-width-calendar"></v-date-picker>
         </v-col>
       </v-row>
 
@@ -13,6 +13,13 @@
       <v-row class="form-group">
         <v-col cols="12" sm="6">
           <v-select v-model="selectedHours" :items="availableHours" label="Nombre d'heures" outlined dense></v-select>
+        </v-col>
+      </v-row>
+
+      <!-- Case à cocher pour accepter la politique de confidentialité -->
+      <v-row class="form-group">
+        <v-col cols="12">
+          <v-checkbox v-model="privacyPolicyAccepted" label="Accepter la politique de confidentialité" dense></v-checkbox>
         </v-col>
       </v-row>
 
@@ -26,8 +33,8 @@
       <!-- Bouton de validation -->
       <v-row class="form-group">
         <v-col cols="12">
-          <router-link to="/payment">
-            <v-btn color="black" dark @click="submitForm">Valider</v-btn>
+          <router-link :to="privacyPolicyAccepted ? '/payment' : ''">
+            <v-btn :disabled="!privacyPolicyAccepted" color="black" dark @click="submitForm">Continuer</v-btn>
           </router-link>
         </v-col>
       </v-row>
@@ -41,6 +48,7 @@
   // Variables pour stocker les informations du formulaire
   const selectedDate = ref(new Date());
   const selectedHours = ref(1);
+  const privacyPolicyAccepted = ref(false);
 
   // Calcul du prix de la session en fonction du nombre d'heures
   const prixSession = computed(() => {
@@ -49,12 +57,6 @@
 
   // Liste des heures disponibles
   const availableHours = [...Array(12).keys()].map(hour => hour + 1);
-
-  // Limite de sélection pour les dates
-  const minDate = new Date();
-  minDate.setDate(minDate.getDate() - minDate.getDay()); // Début de la semaine actuelle
-  const maxDate = new Date();
-  maxDate.setDate(maxDate.getDate() - maxDate.getDay() + 6); // Fin de la semaine actuelle
 
   // Fonction pour soumettre le formulaire
   const submitForm = () => {
@@ -102,5 +104,9 @@
 
   .form-group {
     margin-bottom: 20px;
+  }
+
+  .full-width-calendar {
+    width: 100%;
   }
 </style>

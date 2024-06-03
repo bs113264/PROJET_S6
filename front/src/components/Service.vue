@@ -2,14 +2,20 @@
   <v-container>
     <!-- Boutons pour sélectionner le formulaire -->
     <v-row justify="center" class="button-row">
-      <v-btn @click="selectedForm = 'videoImage'" :class="{ active: selectedForm === 'videoImage' }">Visuel</v-btn>
-      <v-btn @click="selectedForm = 'mix'" :class="{ active: selectedForm === 'mix' }">Mix</v-btn>
-      <v-btn @click="selectedForm = 'master'" :class="{ active: selectedForm === 'master' }">Mastering</v-btn>
+      <v-col cols="12" sm="4" class="button-col">
+        <v-btn @click="selectedForm = 'videoImage'" :class="{ active: selectedForm === 'videoImage' }">Visuel</v-btn>
+      </v-col>
+      <v-col cols="12" sm="4" class="button-col">
+        <v-btn @click="selectedForm = 'mix'" :class="{ active: selectedForm === 'mix' }">Mix</v-btn>
+      </v-col>
+      <v-col cols="12" sm="4" class="button-col">
+        <v-btn @click="selectedForm = 'master'" :class="{ active: selectedForm === 'master' }">Mastering</v-btn>
+      </v-col>
     </v-row>
 
     <!-- Formulaire Vidéo/Image -->
     <v-form v-if="selectedForm === 'videoImage'" @submit.prevent="submitVideoImageForm" class="form">
-      <v-text-field v-model="request" label="Demande détaillée" required></v-text-field>
+      <v-textarea v-model="request" label="Demande détaillée" rows="4" required></v-textarea>
       <v-text-field v-model="email" label="Adresse mail" type="email" required></v-text-field>
       <v-text-field v-model="phone" label="Numéro de téléphone" type="tel" required></v-text-field>
       <v-btn color="black" type="submit">Envoyer</v-btn>
@@ -18,6 +24,7 @@
     <!-- Formulaire Mix -->
     <v-form v-if="selectedForm === 'mix'" @submit.prevent="submitMixForm" class="form">
       <v-text-field v-model="soundLink" label="Lien vers le son" required></v-text-field>
+      <v-textarea v-model="mixRequest" label="Demande détaillée pour le mix" rows="4" required></v-textarea>
       <v-text-field v-model="email" label="Adresse mail" type="email" required></v-text-field>
       <v-text-field v-model="phone" label="Numéro de téléphone" type="tel" required></v-text-field>
       <v-text-field v-model="clientPresent" label="Client présent lors du mix"></v-text-field>
@@ -28,7 +35,7 @@
     <!-- Formulaire Master -->
     <v-form v-if="selectedForm === 'master'" @submit.prevent="submitMasterForm" class="form">
       <v-text-field v-model="soundLink" label="Lien vers le son mixé" required></v-text-field>
-      <v-text-field v-model="streamingPlatforms" label="Plateformes de streaming ciblés " required></v-text-field>
+      <v-text-field v-model="streamingPlatforms" label="Plateformes de streaming ciblées" required></v-text-field>
       <v-text-field v-model="email" label="Adresse mail" type="email" required></v-text-field>
       <v-text-field v-model="phone" label="Numéro de téléphone" type="tel" required></v-text-field>
       <v-btn color="black" type="submit">Envoyer</v-btn>
@@ -54,6 +61,7 @@
   const clientPresent = ref('');
   const mixOption = ref('');
   const streamingPlatforms = ref('');
+  const mixRequest = ref('');
 
   const submitVideoImageForm = () => {
     emailjs.send(SERVICE_ID, TEMPLATE_ID, {
@@ -77,15 +85,17 @@
   const submitMixForm = () => {
     emailjs.send(SERVICE_ID, TEMPLATE_ID, {
       soundLink: soundLink.value,
+      mixRequest: mixRequest.value,
       clientPresent: clientPresent.value,
       mixOption: mixOption.value,
-      email : email.value,
+      email: email.value,
       phone: phone.value,
     }, PUBLIC_KEY)
       .then((response) => {
         console.log('Email sent successfully!', response.status, response.text);
         // Optionally reset the form fields
         soundLink.value = '';
+        mixRequest.value = '';
         clientPresent.value = '';
         mixOption.value = '';
         email.value = '';
@@ -122,6 +132,11 @@
     margin-bottom: 20px;
   }
 
+  .button-col {
+    display: flex;
+    justify-content: center;
+  }
+
   .active {
     background-color: #5c6273 !important;
     color: white !important;
@@ -129,13 +144,11 @@
 
   .v-container {
     padding-top: 20px;
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
   }
 
   .v-btn {
-    margin: 60px;
-    padding: 50px;
     background-color: black;
     color: white;
   }
@@ -147,7 +160,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
 
-  .form .v-text-field, .form .v-checkbox, .form .v-radio-group {
+  .form .v-text-field, .form .v-checkbox, .form .v-radio-group, .form .v-textarea {
     margin-bottom: 20px;
   }
 
