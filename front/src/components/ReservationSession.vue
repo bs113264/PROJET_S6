@@ -9,6 +9,13 @@
         </v-col>
       </v-row>
 
+      <!-- Heure de début -->
+      <v-row class="form-group">
+        <v-col cols="12" sm="6">
+          <v-select v-model="selectedStartTime" :items="availableStartTimes" label="Heure de début" outlined dense></v-select>
+        </v-col>
+      </v-row>
+
       <!-- Nombre d'heures -->
       <v-row class="form-group">
         <v-col cols="12" sm="6">
@@ -47,6 +54,7 @@
 
   // Variables pour stocker les informations du formulaire
   const selectedDate = ref(new Date());
+  const selectedStartTime = ref('08:00'); // Default start time
   const selectedHours = ref(1);
   const privacyPolicyAccepted = ref(false);
 
@@ -58,15 +66,24 @@
   // Liste des heures disponibles
   const availableHours = [...Array(12).keys()].map(hour => hour + 1);
 
+  // Liste des heures de début disponibles
+  const availableStartTimes = [
+    '08:00', '09:00', '10:00', '11:00', '12:00',
+    '13:00', '14:00', '15:00', '16:00', '17:00',
+    '18:00', '19:00', '20:00', '21:00', '22:00'
+  ];
+
   // Fonction pour soumettre le formulaire
   const submitForm = () => {
     // Effectuer des actions avec les données du formulaire
     console.log("Date de la session:", selectedDate.value);
+    console.log("Heure de début:", selectedStartTime.value);
     console.log("Nombre d'heures:", selectedHours.value);
     console.log("Prix de la session:", prixSession.value);
 
     // Réinitialiser les valeurs du formulaire après soumission
     selectedDate.value = new Date();
+    selectedStartTime.value = '08:00';
     selectedHours.value = 1;
   };
 
