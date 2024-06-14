@@ -12,11 +12,10 @@
         <v-icon>facebook</v-icon>
       </v-btn>
       <!-- Bouton pour afficher la boîte de dialogue de connexion -->
-      <v-btn icon @click="showDialog = true" color="white">
+      <v-btn icon @click="authenticateWithInstagram" color="white">
         <v-icon>person</v-icon>
       </v-btn>
     </v-app-bar>
-
 
     <!-- Barre latérale -->
     <v-navigation-drawer
@@ -115,6 +114,8 @@
 
 <script setup>
   import { ref } from 'vue';
+  import axios from 'axios';
+  import { useRouter } from 'vue-router';
 
   const showDialog = ref(false);
   const isCreatingAccount = ref(true); // Par défaut, le formulaire affiche la création de compte
@@ -201,6 +202,51 @@ En continuant à utiliser notre site web, vous consentez à notre Politique de c
 Si vous avez des questions concernant cette Politique de confidentialité, veuillez nous contacter à l'adresse e-mail suivante : 5amsouth@gmail.com.
 `);
 
+  const CLIENT_ID = '3139174822882261';
+  const CLIENT_SECRET = '94a3ae96d613fb40a9d0155f85cd0228';
+  const REDIRECT_URI = 'https://www.google.fr/'; // Remplacez par l'URI de redirection configurée
+
+  const router = useRouter();
+
+  const authenticateWithInstagram = () => {
+    const authUrl = `https://api.instagram.com/oauth/authorize?
+    client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=user_profile&response_type=code`;
+    window.location.href = authUrl;
+  };
+
+  const handleInstagramCallback = async (code) => {
+    try {
+      const response = await axios.post('https://api.instagram.com/oauth/access_token', {
+        client_id: CLIENT_ID,
+        client_secret: CLIENT_SECRET,
+        grant_type: 'authorization_code',
+        redirect_uri: REDIRECT_URI,
+        code: code
+      });
+
+      const accessToken = response.data.access_token;
+      const userResponse = await axios.get(`https://graph.instagram.com/me?fields=id,username&access_token=${accessToken}`);
+
+      const user = userResponse.data;
+      console.log('User logged in:', user);
+
+      // Enregistrer les informations utilisateur dans votre système ou gestion d'état
+      // ...
+
+      // Rediriger l'utilisateur vers la page souhaitée
+      router.push('/presentation');
+    } catch (error) {
+      console.error('Error during Instagram authentication:', error);
+    }
+  };
+
+  // Vérifier si le code d'authentification est présent dans l'URL de redirection
+  const urlParams = new URLSearchParams(window.location.search);
+  const code = urlParams.get('code');
+  if (code) {
+    handleInstagramCallback(code);
+  }
+
   const items = [
     { text: 'Qui sommes nous ?' },
     { text: 'Services' },
@@ -238,7 +284,6 @@ Si vous avez des questions concernant cette Politique de confidentialité, veuil
     alert("Vous n'avez pas accepté la politique de confidentialité de notre site. L'utilisation de ce dernier ne vous est donc pas autorisée !");
     showPrivacyPolicy.value = false;
   }
-
 </script>
 
 <style scoped>
