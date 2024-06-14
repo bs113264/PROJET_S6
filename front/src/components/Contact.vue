@@ -64,17 +64,17 @@
   const TEMPLATE_ID = 'template_u2rxeia';
   const PUBLIC_KEY = 'JzmSIbK9bd4EdS0xl';
 
+  const nom = ref('');
+  const prenom = ref('');
+  const email = ref('');
+  const message = ref('');
+
   const intervenants = [
     { nom: "BOSKO", prenom: "", poste: "Ingénieur Son", email: "ameyzin137@gmail.com", tel: "06 25 52 13 08" },
     { nom: "DAF", prenom: "SHADOW", poste: "Ingénieur Son", email: "youngdaf0@gmail.com", tel: "07 44 75 17 29" },
     { nom: "BOSKO", prenom: "", poste: "Ingénieur Son" },
     { nom: "DAF", prenom: "SHADOW", poste: "Ingénieur Son", email: "youngdaf0@gmail.com", tel: "07 44 75 17 29"  },
   ];
-
-  const nom = ref('');
-  const prenom = ref('');
-  const email = ref('');
-  const message = ref('');
 
   const sendEmail = () => {
     emailjs.send(SERVICE_ID, TEMPLATE_ID, {
