@@ -20,7 +20,6 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue';
 
   const images = Array.from({ length: 12 }, (_, i) => i + 1).slice(4); // Crée une liste des index d'images et coupe les 4 premiers
 

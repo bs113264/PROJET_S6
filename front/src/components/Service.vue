@@ -160,10 +160,6 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
 
-  .form .v-text-field, .form .v-checkbox, .form .v-radio-group, .form .v-textarea {
-    margin-bottom: 20px;
-  }
-
   .form .v-btn {
     display: block;
     margin: 20px auto 0;

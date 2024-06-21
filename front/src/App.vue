@@ -39,14 +39,14 @@
     </main>
 
     <!-- Footer avec le bouton pour afficher la politique de confidentialité -->
-    <v-footer app class="footer">
+    <v-footer app="" class="footer">
       <v-spacer></v-spacer>
       <v-btn color="white" @click="showPrivacyPolicy = true" class="privacy-btn">Politique de confidentialité</v-btn>
       <v-spacer></v-spacer>
     </v-footer>
 
     <!-- Dialogue pour la connexion/création de compte -->
-    <v-dialog v-model="showDialog" persistent max-width="600px">
+    <v-dialog v-model="showDialog" persistent="" max-width="600px">
       <v-card>
         <v-card-title color="black">
           Création ou Connexion de Compte
@@ -98,7 +98,7 @@
             label="Politique de confidentialité"
             outlined
             rows="10"
-            readonly
+            readonly=""
           ></v-textarea>
         </v-card-text>
         <v-card-actions>
@@ -124,7 +124,7 @@
   const email = ref('');
   const password = ref('');
   const drawer = ref(false);
-  const tab = ref(null);
+
 
   const showPrivacyPolicy = ref(false);
 
@@ -209,9 +209,8 @@ Si vous avez des questions concernant cette Politique de confidentialité, veuil
   const router = useRouter();
 
   const authenticateWithInstagram = () => {
-    const authUrl = `https://api.instagram.com/oauth/authorize?
+    window.location.href = `https://api.instagram.com/oauth/authorize?
     client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=user_profile&response_type=code`;
-    window.location.href = authUrl;
   };
 
   const handleInstagramCallback = async (code) => {
@@ -234,7 +233,7 @@ Si vous avez des questions concernant cette Politique de confidentialité, veuil
       // ...
 
       // Rediriger l'utilisateur vers la page souhaitée
-      router.push('/presentation');
+      await router.push('/presentation');
     } catch (error) {
       console.error('Error during Instagram authentication:', error);
     }
@@ -300,9 +299,6 @@ Si vous avez des questions concernant cette Politique de confidentialité, veuil
     padding-top: 56px; /* Taille de la barre de navigation (ajustez selon votre cas) */
   }
 
-  .content {
-    /* Ajoutez du style au contenu principal de votre studio d'enregistrement */
-  }
 
   .footer {
     background-color: black;

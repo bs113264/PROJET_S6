@@ -103,7 +103,4 @@
     font-weight: bold;
   }
 
-  .contact-card-text {
-    padding: 20px;
-  }
 </style>
